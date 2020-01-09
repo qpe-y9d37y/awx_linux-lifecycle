@@ -12,4 +12,5 @@
   - name: Install ansible-collection-theforeman-foreman package
     yum:
       name: ansible-collection-theforeman-foreman
+      disable_gpg_check: yes
       state: latest
