@@ -15,6 +15,11 @@
       - "Ansible version: {{ ansible_version.full }}"
       - "Python version: {{ ansible_python_version }}"
 
+  - name: Upgrade all packages
+    yum:
+      name: '*'
+      state: latest
+
   - name: Install ansible-collection-theforeman-foreman package
     yum:
       name: ansible-collection-theforeman-foreman
