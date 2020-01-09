@@ -20,9 +20,10 @@
       name:
         - PyYAML
         - apypie
+        - mazer
 
   - name: Install Foreman collection from Ansible Galaxy
-    command: ansible-galaxy install -r requirements.yml
+    command: mazer install theforeman.foreman
     register: output
 
   - name: Print output of installation from Ansible Galaxy
