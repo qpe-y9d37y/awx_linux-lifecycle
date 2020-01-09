@@ -1,2 +1,9 @@
 ---
 - name: Unregister RHEL server from RH CDN
+  hosts: "{{ decom_host }}"
+
+  tasks:
+
+  - name: Unregister RHEL server from RH CDN
+    redhat_subscription:
+      state: absent
