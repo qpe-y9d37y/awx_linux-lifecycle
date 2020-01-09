@@ -3,12 +3,6 @@
 
   tasks:
 
-  - name: Add foreman-client repository
-    yum_repository:
-      name: foreman-client
-      description: Foreman client latest
-      baseurl: http://yum.theforeman.org/client/latest/el7/$basearch/
-
   - name: Print current version of Python and Ansible
     debug:
       msg:
