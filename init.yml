@@ -9,18 +9,22 @@
       description: Foreman client latest
       baseurl: http://yum.theforeman.org/client/latest/el7/$basearch/
 
-  - name: Get current version of Python
+  - name: Print current version of Python and Ansible
     debug:
       msg:
       - "Ansible version: {{ ansible_version.full }}"
       - "Python version: {{ ansible_python_version }}"
 
-  - name: Printing version of Ansible Galaxy
-    command: ansible-galaxy --version
+  - name: Install python dependancies
+    pip:
+      name:
+        - PyYAML
+        - apypie
+
+  - name: Install Foreman collection from Ansible Galaxy
+    command: ansible-galaxy collection install theforeman.foreman
     register: output
 
-  - name: Printing version of Ansible Galaxy
+  - name: Print output of installation from Ansible Galaxy
     debug:
       var: output
-
-   
