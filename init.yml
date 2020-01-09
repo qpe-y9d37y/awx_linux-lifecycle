@@ -9,6 +9,10 @@
       description: Foreman client latest
       baseurl: http://yum.theforeman.org/client/latest/el7/$basearch/
 
+  - name: Get current version of Python
+    debug:
+      var: ansible_python_version
+
   - name: Install ansible-collection-theforeman-foreman package
     yum:
       name: ansible-collection-theforeman-foreman
