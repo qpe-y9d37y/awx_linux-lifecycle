@@ -16,3 +16,12 @@
 
 * fman_rm-host.yml - **WIP**
   - Usage: delete a host from Foreman (Satellite)
+
+
+## Authors
+
+* **Quentin Petit** - *Initial work*
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
