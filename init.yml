@@ -22,7 +22,7 @@
         - apypie
 
   - name: Install Foreman collection from Ansible Galaxy
-    command: ansible-galaxy collection install theforeman.foreman --roles-path ~/.ansible/collections/ansible_collections/
+    command: ansible-galaxy install -r requirements.yml
     register: output
 
   - name: Print output of installation from Ansible Galaxy
