@@ -12,7 +12,7 @@
 * cdn_unregister.yml
   - Used to unregister a RHEL server from Red Hat CDN     
   - Variables to declare in AWX (Tower):
-    - decom_host: host to unregister from RH CDN      
+    - `decom_host`: host to unregister from RH CDN      
 
 * fman_rm-host.yml - WIP 
   - Used to delete a host from Foreman (Satellite)
