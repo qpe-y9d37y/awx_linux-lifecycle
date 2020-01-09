@@ -15,13 +15,12 @@
       - "Ansible version: {{ ansible_version.full }}"
       - "Python version: {{ ansible_python_version }}"
 
-  - name: Upgrade all packages
-    yum:
-      name: '*'
-      state: latest
+  - name: Printing version of Ansible Galaxy
+    command: ansible-galaxy --version
+    register: output
 
-  - name: Install ansible-collection-theforeman-foreman package
-    yum:
-      name: ansible-collection-theforeman-foreman
-      disable_gpg_check: yes
-      state: latest
+  - name: Printing version of Ansible Galaxy
+    debug:
+      var: output
+
+   
