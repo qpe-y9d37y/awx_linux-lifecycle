@@ -14,5 +14,5 @@
   - Variables to declare in AWX (Tower):
     - `decom_host`: host to unregister from RH CDN      
 
-* fman_rm-host.yml - WIP 
+* fman_rm-host.yml - **WIP**
   - Used to delete a host from Foreman (Satellite)
