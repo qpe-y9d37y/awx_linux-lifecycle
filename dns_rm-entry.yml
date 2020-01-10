@@ -6,7 +6,7 @@
 
   - name: Remove DNS entry
     lineinfile:
-      line: "{{ clt_ipadd }} {{ clt_fqdn }} {{ clt_name }}"
+      line: "{{ clt_ipadd }} {{ clt_fqdn }} {{ clt_fqdn.split(".")[0] | lower }}"
       path: "/etc/hosts"
       state: absent
     notify:
