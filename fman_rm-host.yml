@@ -1,0 +1,13 @@
+---
+- name: Delete a Foreman host
+  hosts: localhost
+
+  tasks:
+
+  - name: "Delete a host"
+    theforeman.foreman.foreman_host:
+      username: "{{ fman_usr }}"
+      password: "{{ fman_pwd }}"
+      server_url: "{{ fman_url }}"
+      name: "{{ decom_host }}"
+      state: absent
