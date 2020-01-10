@@ -24,8 +24,9 @@
   - Usage: Remove DNS entry to libvirt dnsmasq
   - Variables to declare in AWX:
     - `dns_srv`: DNS server
-    - `clt_ipadd`: IP address of the client that will be removed
-    - `clt_fqdn`: FQDN of the client that will be removed
+    - `decom_host_ip`: IP address of the client that will be removed
+    - `decom_host`: Hostname of the client that will be removed
+    - `domain`: Domain on which is the client that will be removed
 
 * `fman_rm-host.yml`
   - Usage: delete a host from Foreman (Satellite)
