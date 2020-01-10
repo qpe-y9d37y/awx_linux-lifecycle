@@ -1,0 +1,18 @@
+---
+- name: Remove DNS entry for libvirt dnsmasq
+  hosts: "{{ dns_srv }}"
+
+  tasks:
+
+  - name: Remove DNS entry
+    lineinfile:
+      line: "{{ clt_ipadd }} {{ clt_fqdn }} {{ clt_name }}"
+      path: "/etc/hosts"
+      state: absent
+    notify:
+    - Restart libvirt
+
+  - name: Restart libvirt
+    service:
+      name: libvirtd
+      state: restarted
