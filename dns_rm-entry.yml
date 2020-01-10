@@ -6,7 +6,7 @@
 
   - name: Remove DNS entry
     lineinfile:
-      line: "{{ decom_host_ip }} {{ decom_host }} {{ decom_host.split('.')[0] | lower }}"
+      regexp: "{{ decom_host }}"
       path: "/etc/hosts"
       state: absent
     notify:
