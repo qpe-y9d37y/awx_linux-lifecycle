@@ -9,5 +9,6 @@
       username: "{{ fman_usr }}"
       password: "{{ fman_pwd }}"
       server_url: "{{ fman_url }}"
+      validate_certs: no
       name: "{{ decom_host }}"
       state: absent
