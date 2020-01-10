@@ -12,6 +12,8 @@
     notify:
     - Restart libvirt
 
+  handlers:
+
   - name: Restart libvirt
     service:
       name: libvirtd
