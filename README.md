@@ -1,5 +1,5 @@
 # awx_rhel-lifecycle
-   Management of RHEL servers' lifecycle with AWX Project or Ansible Tower
+Management of RHEL servers' lifecycle with AWX Project or Ansible Tower
 
 ## Playbooks and comments:
 
@@ -24,7 +24,6 @@
   - Usage: Remove DNS entry to libvirt dnsmasq
   - Variables to declare in AWX:
     - `dns_srv`: DNS server
-    - `decom_host_ip`: IP address of the client that will be removed
     - `decom_host`: Hostname of the client that will be removed
 
 * `fman_rm-host.yml`
@@ -34,6 +33,16 @@
     - `fman_pwd`: Foreman password (in a vault)
     - `fman_url`: Foreman URL
     - `decom_host`: host to delete (in a survey)
+
+## Workflow Template
+
+Here are some examples of the possible workflow templates:
+* VM decommission:
+```
++----------------+    +--------------+    +--------------+
+| cdn_unregister | -> | fman_rm-host | -> | dns_rm-entry |
++----------------+    +--------------+    +--------------+
+```
 
 ## Authors
 
