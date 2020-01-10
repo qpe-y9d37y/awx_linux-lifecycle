@@ -26,7 +26,6 @@
     - `dns_srv`: DNS server
     - `decom_host_ip`: IP address of the client that will be removed
     - `decom_host`: Hostname of the client that will be removed
-    - `domain`: Domain on which is the client that will be removed
 
 * `fman_rm-host.yml`
   - Usage: delete a host from Foreman (Satellite)
