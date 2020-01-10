@@ -13,6 +13,20 @@
   - Variables to declare in AWX (Tower):
     - `decom_host`: host to unregister from RH CDN (in a survey)      
 
+* `dns_add-entry.yml`
+  - Usage: Add DNS entry to libvirt dnsmasq
+  - Variables to declare in AWX:
+    - `dns_srv`: DNS server
+    - `clt_ipadd`: IP address of the client that will be added
+    - `clt_fqdn`: FQDN of the client that will be added
+
+* `dns_rm-entry.yml`
+  - Usage: Remove DNS entry to libvirt dnsmasq
+  - Variables to declare in AWX:
+    - `dns_srv`: DNS server
+    - `clt_ipadd`: IP address of the client that will be removed
+    - `clt_fqdn`: FQDN of the client that will be removed
+
 * `fman_rm-host.yml`
   - Usage: delete a host from Foreman (Satellite)
   - Variables to declare in AWX:
