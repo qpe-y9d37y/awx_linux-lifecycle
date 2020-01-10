@@ -34,7 +34,7 @@ Management of RHEL servers' lifecycle with AWX Project or Ansible Tower
     - `fman_url`: Foreman URL
     - `decom_host`: host to delete (in a survey)
 
-## Workflow Template
+## Workflow Templates
 
 Here are some examples of the possible workflow templates:
 * VM decommission:
