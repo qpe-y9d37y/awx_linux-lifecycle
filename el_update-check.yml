@@ -1,0 +1,14 @@
+---
+- name: Check available updates on Enterprise Linux servers
+  hosts: all
+
+  tasks:
+
+  - name: Check available updates
+    yum:
+      list: updates
+    register: output
+
+  - name: Print available updates
+    debug:
+      var: output
