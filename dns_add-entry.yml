@@ -7,7 +7,7 @@
   - name: Add DNS A entry
     lineinfile:
       line: "{{ new_host }}. IN A {{ ip_add }}"
-      path: "/var/named/dynamic/db.{{ clt_fqdn.split('.', 1)[1] }}"
+      path: "/var/named/dynamic/db.{{ new_host.split('.', 1)[1] }}"
       state: present
     notify:
     - Restart named
