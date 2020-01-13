@@ -1,0 +1,12 @@
+- name: Initialization of localhost to be able to use the different playbooks
+  hosts: localhost
+
+  tasks:
+
+  - name: Print current version of Python and Ansible
+    debug:
+      msg:
+      - "Ansible version: {{ ansible_version.full }}"
+      - "Python version: {{ ansible_python_version }}"
+      - "Hostname: {{ ansible_env.HOSTNAME }}"
+      - "User: {{ ansible_env.LOGNAME }}"
