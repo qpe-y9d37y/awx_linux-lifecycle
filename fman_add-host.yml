@@ -1,18 +1,8 @@
 ---
 - name: Create a Foreman host
-  hosts: localhost
+  hosts: "{{ fman_srv }}"
 
   tasks:
 
   - name: Create a host
-    theforeman.foreman.foreman_host:
-      username: "{{ fman_usr }}"
-      password: "{{ fman_pwd }}"
-      server_url: "{{ fman_url }}"
-      validate_certs: no
-      name: "{{ new_host }}"
-      hostgroup: "{{ hostgroup }}"
-      organization: "{{ organization }}"
-      location: "{{ location }}"
-      build: true
-      state: present
+    command: "/usr/bin/hammer -u {{ fman_usr }} -p {{ fman_pwd }} host create --build true --compute-attributes start=1 --hostgroup {{ hostgroup }} --organization {{ organization }} --location {{ location }} --ip {{ ip_add }} --name {{ new_host }}"
