@@ -15,7 +15,7 @@
   - name: Add DNS PTR entry
     lineinfile:
       line: "{{ clt_ipadd.split('.')[3] }} IN PTR {{ clt_fqdn }}."
-      path: "/var/named/dynamic/db.{{ clt_ipadd.split('.')[2] }}.{{ clt_ipadd.split('.')[1] }}.{{ clt_ipadd.split('.')[0] }}.in-addr.arpa
+      path: "/var/named/dynamic/db.{{ clt_ipadd.split('.')[2] }}.{{ clt_ipadd.split('.')[1] }}.{{ clt_ipadd.split('.')[0] }}.in-addr.arpa"
       state: present
     notify:
     - Restart named
@@ -26,4 +26,3 @@
     service:
       name: named
       state: restarted
-    static: false
