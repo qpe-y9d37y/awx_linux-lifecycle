@@ -1,20 +1,29 @@
 ---
-- name: Add DNS entry for libvirt dnsmasq
+- name: Add DNS entry for named
   hosts: "{{ dns_srv }}"
 
   tasks:
 
-  - name: Add DNS entry
+  - name: Add DNS A entry
     lineinfile:
-      line: "{{ clt_ipadd }} {{ clt_fqdn }} {{ clt_fqdn.split('.')[0] | lower }}"
-      path: "/etc/hosts"
+      line: "{{ clt_fqdn }}. IN A {{ clt_ipadd }}"
+      path: "/var/named/dynamic/db.{{ clt_fqdn.split('.', 1)[1] }}"
       state: present
     notify:
-    - Restart libvirt
+    - Restart named
+
+  - name: Add DNS PTR entry
+    lineinfile:
+      line: "{{ clt_ipadd.split('.')[3] }} IN PTR {{ clt_fqdn }}."
+      path: "/var/named/dynamic/db.{{ clt_ipadd.split('.')[2] }}.{{ clt_ipadd.split('.')[1] }}.{{ clt_ipadd.split('.')[0] }}.in-addr.arpa
+      state: present
+    notify:
+    - Restart named
 
   handlers:
 
-  - name: Restart libvirt
+  - name: Restart named
     service:
-      name: libvirtd
+      name: named
       state: restarted
+    static: false
