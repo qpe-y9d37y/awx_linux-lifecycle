@@ -14,17 +14,18 @@ Management of RHEL servers' lifecycle with AWX Project or Ansible Tower
     - `decom_host`: host to unregister from RH CDN (in a survey)      
 
 * `dns_add-entry.yml`
-  - Usage: Add DNS entry to libvirt dnsmasq
+  - Usage: Add DNS entry to named
   - Variables to declare in AWX:
     - `dns_srv`: DNS server
-    - `clt_ipadd`: IP address of the client that will be added
-    - `clt_fqdn`: FQDN of the client that will be added
+    - `clt_ipadd`: IP address of the client that will be added (in a survey)
+    - `clt_fqdn`: FQDN of the client that will be added (in a survey)
 
 * `dns_rm-entry.yml`
-  - Usage: Remove DNS entry to libvirt dnsmasq
+  - Usage: Remove DNS entry to named
   - Variables to declare in AWX:
     - `dns_srv`: DNS server
-    - `decom_host`: Hostname of the client that will be removed
+    - `net_add`: Network address on which is the client
+    - `decom_host`: Hostname of the client that will be removed (in a survey)
 
 * `fman_rm-host.yml`
   - Usage: delete a host from Foreman (Satellite)
