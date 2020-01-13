@@ -1,0 +1,24 @@
+---
+- name: Create a Foreman host
+  hosts: localhost
+
+  tasks:
+
+  - name: Create a host
+    theforeman.foreman.foreman_host:
+      username: "{{ fman_usr }}"
+      password: "{{ fman_pwd }}"
+      server_url: "{{ fman_url }}"
+      validate_certs: no
+      name: "{{ decom_host }}"
+      state: absent
+
+- name: "Create a host with build context"
+  foreman_host:
+    username: "admin"
+    password: "changeme"
+    server_url: "https://foreman.example.com"
+    name: "new_host"
+    hostgroup: my_hostgroup
+    build: true
+    state: present
