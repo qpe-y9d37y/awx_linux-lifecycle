@@ -17,8 +17,8 @@ Management of RHEL servers' lifecycle with AWX Project or Ansible Tower
   - Usage: Add DNS entry to named
   - Variables to declare in AWX:
     - `dns_srv`: DNS server
-    - `clt_ipadd`: IP address of the client that will be added (in a survey)
-    - `clt_fqdn`: FQDN of the client that will be added (in a survey)
+    - `ip_add`: IP address of the client that will be added (in a survey)
+    - `new_host`: FQDN of the client that will be added (in a survey)
 
 * `dns_rm-entry.yml`
   - Usage: Remove DNS entry to named
@@ -26,6 +26,18 @@ Management of RHEL servers' lifecycle with AWX Project or Ansible Tower
     - `dns_srv`: DNS server
     - `net_add`: Network address on which is the client
     - `decom_host`: Hostname of the client that will be removed (in a survey)
+
+* `fman_add-host.yml`
+  - Usage: create a host through Foreman (Satellite)
+  - Variables to declare in AWX:
+    - `fman_srv`: Foreman server
+    - `fman_usr`: Foreman admin user (in a vault)
+    - `fman_pwd`: Foreman admin password (in a vault)
+    - `hostgroup`: Hostgroup of the new host
+    - `organization`: Host organization
+    - `location`: Host location
+    - `ip_add`: Host IP address
+    - `new_host`: Host Name
 
 * `fman_rm-host.yml`
   - Usage: delete a host from Foreman (Satellite)
@@ -43,6 +55,13 @@ Here are some examples of the possible workflow templates:
 +----------------+    +--------------+    +--------------+
 | cdn_unregister | -> | fman_rm-host | -> | dns_rm-entry |
 +----------------+    +--------------+    +--------------+
+```
+
+* VM creation:
+```
++---------------+    +---------------+
+| fman_add-host | -> | dns_add-entry |
++---------------+    +---------------+
 ```
 
 ## Authors
