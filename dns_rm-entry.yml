@@ -1,20 +1,28 @@
 ---
-- name: Remove DNS entry for libvirt dnsmasq
+- name: Remove DNS entry for named
   hosts: "{{ dns_srv }}"
 
   tasks:
 
-  - name: Remove DNS entry
+  - name: Remove DNS A entry
     lineinfile:
       regexp: "{{ decom_host }}"
-      path: "/etc/hosts"
+      path: "/var/named/dynamic/db.{{ clt_fqdn.split('.', 1)[1] }}"
       state: absent
     notify:
-    - Restart libvirt
+    - Restart named
+
+  - name: Remove DNS PTR entry
+    lineinfile:
+      regexp: "{{ decom_host }}"
+      path: "/var/named/dynamic/db.*.in-addr.arpa"
+      state: absent
+    notify:
+    - Restart named
 
   handlers:
 
-  - name: Restart libvirt
+  - name: Restart named
     service:
-      name: libvirtd
+      name: named
       state: restarted
