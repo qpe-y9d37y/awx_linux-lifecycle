@@ -12,4 +12,5 @@
       validate_certs: no
       name: "{{ new_host }}"
       hostgroup: "{{ hostgroup }}"
+      build: true
       state: present
