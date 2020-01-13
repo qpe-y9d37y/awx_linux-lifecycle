@@ -15,7 +15,7 @@
   - name: Remove DNS PTR entry
     lineinfile:
       regexp: "{{ decom_host }}"
-      path: "/var/named/dynamic/db.*.in-addr.arpa"
+      path: "/var/named/dynamic/db.{{ net_add.split('.')[2] }}.{{ net_add.split('.')[1] }}.{{ net_add.split('.')[0] }}.in-addr.arpa"
       state: absent
     notify:
     - Restart named
