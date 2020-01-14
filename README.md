@@ -1,5 +1,5 @@
-# awx_rhel-lifecycle
-Management of RHEL servers' lifecycle with AWX Project or Ansible Tower
+# awx_linux-lifecycle
+Management of Linux servers' lifecycle with AWX Project or Ansible Tower
 
 ## Playbooks and comments:
 
