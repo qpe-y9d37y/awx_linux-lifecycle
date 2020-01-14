@@ -11,4 +11,4 @@
 
   - name: Print available updates
     debug:
-      var: output.results
+      var: output.results|length
