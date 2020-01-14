@@ -1,0 +1,21 @@
+---
+- name: Check and apply available updates on Debian type Linux
+  hosts: 
+
+  tasks:
+
+  - name: Apt update
+    apt:
+      update-cache: yes
+
+  # Maybe we'll need to make sure that aptitude is present here...
+
+  - name: Check updates
+    apt:
+      upgrade: yes
+    check_mode: yes
+    register: output
+
+  - name: Print available updates:
+    debug:
+      var: output
