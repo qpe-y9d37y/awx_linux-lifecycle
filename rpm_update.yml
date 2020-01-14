@@ -1,5 +1,5 @@
 ---
-- name: Check available updates on Enterprise Linux servers
+- name: Check and apply available updates on Enterprise Linux servers
   hosts: all
   serial: 1
 

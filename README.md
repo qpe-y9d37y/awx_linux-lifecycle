@@ -4,31 +4,35 @@ Management of RHEL servers' lifecycle with AWX Project or Ansible Tower
 ## Playbooks and comments:
 
 * `init.yml`
-  - Usage: install the Foreman collection from Ansible Galaxy      
+  - Use: install the Foreman collection from Ansible Galaxy      
   - No variable needs to be declared for this playbook 
   - **Note**: AWX 9.1.0.0 uses Ansible 2.8.5 meaning that we cannot install collections with the ansible-galaxy command. It will be necessary to remove the mazer dependancy and replace mazer by ansible-galaxy when Ansible will be updated to 2.9
 
 * `cdn_unregister.yml`
-  - Usage: unregister a RHEL server from Red Hat CDN     
+  - Use: unregister a RHEL server from Red Hat CDN     
   - Variables to declare in AWX (Tower):
     - `decom_host`: host to unregister from RH CDN (in a survey)      
 
+* `cfg_el-workenv.yml`
+  - Use: configuration of work environment for Enterprise Linux servers
+  - No variable needs to be declared for this playbook
+
 * `dns_add-entry.yml`
-  - Usage: Add DNS entry to named
+  - Use: add DNS entry to named
   - Variables to declare in AWX:
     - `dns_srv`: DNS server
     - `ip_add`: IP address of the client that will be added (in a survey)
     - `new_host`: FQDN of the client that will be added (in a survey)
 
 * `dns_rm-entry.yml`
-  - Usage: Remove DNS entry to named
+  - Use: remove DNS entry to named
   - Variables to declare in AWX:
     - `dns_srv`: DNS server
     - `net_add`: Network address on which is the client
     - `decom_host`: Hostname of the client that will be removed (in a survey)
 
 * `fman_add-host.yml`
-  - Usage: create a host through Foreman (Satellite)
+  - Use: create a host through Foreman (Satellite)
   - Variables to declare in AWX:
     - `fman_srv`: Foreman server
     - `fman_usr`: Foreman admin user (in a vault)
@@ -40,12 +44,16 @@ Management of RHEL servers' lifecycle with AWX Project or Ansible Tower
     - `new_host`: Host Name
 
 * `fman_rm-host.yml`
-  - Usage: delete a host from Foreman (Satellite)
+  - Use: delete a host from Foreman (Satellite)
   - Variables to declare in AWX:
     - `fman_usr`: Foreman user (in a vault)
     - `fman_pwd`: Foreman password (in a vault)
     - `fman_url`: Foreman URL
     - `decom_host`: host to delete (in a survey)
+
+* `rpm_update.yml`
+  - Use: check and apply available updates on Enterprise Linux servers
+  - No variable needs to be declared for this playbook
 
 ## Workflow Templates
 
