@@ -4,7 +4,7 @@
 
   tasks:
 
-  - name: "Delete a host"
+  - name: Delete a host
     theforeman.foreman.foreman_host:
       username: "{{ fman_usr }}"
       password: "{{ fman_pwd }}"
