@@ -23,5 +23,3 @@
     debug:
       msg: "Restart required."
     when: '"kernel" in output | json_query("results[].name") | unique | join("|")'
-
-  - name: 
