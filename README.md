@@ -72,6 +72,26 @@ Here are some examples of the possible workflow templates:
 +---------------+    +---------------+
 ```
 
+## Other Files
+
+* `bash_aliases`
+  - Description: useful aliases
+
+* `stretch.sh`
+  - Use: script to add, commit and push to git
+  - Usage:
+```
+stretch.sh [-h] [FILES] [COMMENT]
+
+arguments:
+  -h, --help      show this help message and exit
+  FILES           files to add to git
+  COMMENT         commit message
+```
+
+* `vimrc`
+  - Description: vim configuration
+
 ## Authors
 
 * **Quentin Petit** - *Initial work*
