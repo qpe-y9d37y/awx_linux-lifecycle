@@ -28,4 +28,10 @@
       group: root
       mode: 0755
 
-  - name: 
+  - name: Upload vimrc
+    copy:
+      src: files/vimrc
+      dest: /root/.vimrc
+      owner: root
+      group: root
+      mode: 0644
