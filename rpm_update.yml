@@ -1,0 +1,27 @@
+---
+- name: Check available updates on Enterprise Linux servers
+  hosts: all
+
+  tasks:
+
+  - name: Check available updates
+    yum:
+      list: updates
+    register: output
+
+  - name: Print message if no update available
+    debug:
+      msg: "System is up to date."
+    when: output.results|length == 0
+
+  - name: Print available updates
+    debug:
+      var: output | json_query('results[].name') | unique
+    when: output.results|length > 0
+
+  - name: Print message if restart required
+    debug:
+      msg: "Restart required."
+    when: '"kernel" in output | json_query("results[].name") | unique | join("|")'
+
+  - name: 
