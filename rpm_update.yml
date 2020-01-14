@@ -24,3 +24,13 @@
     debug:
       msg: "Restart required."
     when: '"kernel" in output | json_query("results[].name") | unique | join("|")'
+
+  - name: Update server
+    yum:
+      name: '*'
+      state: latest
+    when: output.results|length > 0
+
+  - name: Reboot server
+    reboot:
+    when: '"kernel" in output | json_query("results[].name") | unique | join("|")'
