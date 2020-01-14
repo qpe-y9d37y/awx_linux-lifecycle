@@ -9,6 +9,12 @@
       list: updates
     register: output
 
+  - name: Print message if no update available
+    debug:
+      msg: "System is up to date."
+    when: output.results|length == 0
+
   - name: Print available updates
     debug:
-      var: output.results|length
+      var: output.results
+    when: output.results|length > 0
