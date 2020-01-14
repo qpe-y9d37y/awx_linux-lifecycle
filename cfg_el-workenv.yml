@@ -20,6 +20,15 @@
       group: root
       mode: 0644
 
+  - name: Create directory structure
+    file:
+      path: /home/tools/scripts
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+      recurse: yes
+
   - name: Upload stretch script
     copy:
       src: files/stretch.sh
