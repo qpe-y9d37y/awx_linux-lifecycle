@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -x
+# For debugging purpose.
+# set -x
 
 ########################################################################
 # Bash                                                   Quentin Petit #
@@ -33,6 +34,7 @@ set -x
 #                               FUNCTIONS                              #
 #                                                                      #
 
+# Function to print the usage.
 function usage {
   echo "usage: stretch.sh [-h] [FILES] [COMMENT]
 
@@ -49,12 +51,12 @@ arguments:
 #                               BEGINNING                              #
 #                                                                      #
 
-# Check if help is requested
+# Check if help is requested.
 if [[ -z ${1} ]] || [[ ${1} == "-h" ]] || [[ ${1} == "--help" ]]; then
   usage && exit 0
 fi
 
-# Check if args are set correctly
+# Check if args are set correctly.
 if [[ -z ${2} ]]; then
   echo "Error: missing argument."
   usage && exit 1
@@ -63,7 +65,7 @@ else
   COMMENT=${2}
 fi
 
-# Check if files exist
+# Check if files exist.
 for file in ${FILES}; do
   if [[ ! -e ${file} ]]; then
     echo "Error: ${file} doesn't exist"
@@ -71,7 +73,7 @@ for file in ${FILES}; do
   fi
 done
 
-# Git
+# Git actions.
 git add ${FILES}
 git commit -m "${COMMENT}"
 git push
