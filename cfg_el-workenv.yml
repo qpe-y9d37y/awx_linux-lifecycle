@@ -1,0 +1,31 @@
+---
+- name: Configuration of work environment for Enterprise Linux servers
+  hosts: all
+
+  tasks:
+
+  - name: Launch .bash_aliases in .bashrc
+    blockinfile:
+      path: /etc/bashrc
+      block: |
+        if [ -f /etc/bash_aliases ]; then
+          . /etc/bash_aliases
+        fi
+
+  - name: Upload alias file
+    copy:
+      src: files/bash_aliases
+      dest: /etc/bash_aliases
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Upload stretch script
+    copy:
+      src: files/stretch.sh
+      dest: /home/tools/scripts/stretch.sh
+      owner: root
+      group: root
+      mode: 0755
+
+  - name: 

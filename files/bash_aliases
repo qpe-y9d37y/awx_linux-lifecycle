@@ -1,0 +1,9 @@
+# ANSIBLE
+alias ap='ansible-playbook'
+alias asc='ansible-playbook --syntax-check'
+
+# SCRIPTS
+alias stretch='/home/tools/scripts/stretch.sh'
+
+# VIM
+alias vi='vim'
