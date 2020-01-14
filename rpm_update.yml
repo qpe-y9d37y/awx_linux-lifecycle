@@ -26,11 +26,21 @@
     when: '"kernel" in output | json_query("results[].name") | unique | join("|")'
 
   - name: Update server
-    yum:
-      name: '*'
-      state: latest
+    block:
+  
+    - name: Update all RPM
+      yum:
+        name: '*'
+        state: latest
+  
+    - name: Reboot server if needed
+      reboot:
+      when: '"kernel" in output | json_query("results[].name") | unique | join("|")'
+    
     when: output.results|length > 0
+  
+    rescue:
 
-  - name: Reboot server
-    reboot:
-    when: '"kernel" in output | json_query("results[].name") | unique | join("|")'
+    - name: "Print error message"
+      debug:
+        msg: "Error while update packages, please check the server's configuration."
