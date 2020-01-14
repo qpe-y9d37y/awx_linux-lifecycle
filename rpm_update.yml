@@ -1,6 +1,7 @@
 ---
 - name: Check available updates on Enterprise Linux servers
   hosts: all
+  serial: 1
 
   tasks:
 
