@@ -1,6 +1,6 @@
 ---
 - name: Configuration of work environment for Enterprise Linux servers
-  hosts: all
+  hosts: "{{ el_hosts }}"
 
   tasks:
 

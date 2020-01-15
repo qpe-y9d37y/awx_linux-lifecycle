@@ -15,7 +15,8 @@ Management of Linux servers' lifecycle with AWX Project or Ansible Tower
 
 * `cfg_el-workenv.yml`
   - Use: configuration of work environment for Enterprise Linux servers
-  - No variable needs to be declared for this playbook
+  - Variables to declare in AWX:
+    - `el_hosts`: Enterprise Linux hosts on which to apply this playbook
 
 * `deb_update.yml`
   - Use: check and apply available updates on Debian-like hosts
