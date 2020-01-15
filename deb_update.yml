@@ -15,7 +15,7 @@
 
   - name: Check updates
     apt:
-      upgrade: yes
+      upgrade: 'yes'
     check_mode: yes
     register: output
 
