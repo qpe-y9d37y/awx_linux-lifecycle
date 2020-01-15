@@ -1,6 +1,6 @@
 ---
 - name: Check and apply available updates on Enterprise Linux servers
-  hosts: {{ el_hosts }}
+  hosts: "{{ el_hosts }}"
   serial: 1
 
   tasks:

@@ -1,6 +1,6 @@
 ---
 - name: Check and apply available updates on Debian type Linux
-  hosts: {{ deb_hosts }}
+  hosts: "{{ deb_hosts }}"
 
   tasks:
 
