@@ -4,11 +4,14 @@
 
   tasks:
 
+  - name: Make sure Aptitude in installed
+    apt:
+      name: aptitude
+      state: latest
+
   - name: Apt update
     apt:
       update-cache: yes
-
-  # Maybe we'll need to make sure that aptitude is present here...
 
   - name: Check updates
     apt:
