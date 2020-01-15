@@ -16,6 +16,6 @@
     check_mode: yes
     register: output
 
-  - name: Print available updates:
+  - name: Print available updates
     debug:
       var: output
