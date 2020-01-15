@@ -17,6 +17,11 @@ Management of Linux servers' lifecycle with AWX Project or Ansible Tower
   - Use: configuration of work environment for Enterprise Linux servers
   - No variable needs to be declared for this playbook
 
+* `deb_update.yml`
+  - Use: check and apply available updates on Debian-like hosts
+  - Variables to declare in AWX:
+    - `deb_hosts`: Debian-like hosts on which to apply this playbook
+
 * `dns_add-entry.yml`
   - Use: add DNS entry to named
   - Variables to declare in AWX:
@@ -53,7 +58,8 @@ Management of Linux servers' lifecycle with AWX Project or Ansible Tower
 
 * `rpm_update.yml`
   - Use: check and apply available updates on Enterprise Linux servers
-  - No variable needs to be declared for this playbook
+  - Variables to declare in AWX:
+    - `el_hosts`: Enterprise Linux hosts on which to apply this playbook
 
 ## Workflow Templates
 
