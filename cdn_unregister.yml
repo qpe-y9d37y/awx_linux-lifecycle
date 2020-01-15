@@ -7,3 +7,4 @@
   - name: Unregister RHEL server from RH CDN
     redhat_subscription:
       state: absent
+    when: ansible_distribution == "RedHat"
