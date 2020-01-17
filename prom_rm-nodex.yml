@@ -17,3 +17,4 @@
     docker_compose:
       restarted: yes
       state: present
+      project_src: "{{ dckr_dir }}"
