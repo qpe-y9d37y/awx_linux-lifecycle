@@ -64,7 +64,7 @@
   - name: Add new host in prometheus.yml
     lineinfile:
       insertafter: "  - targets: ['localhost:9100']"
-      line: "  - targets: ['{{  }}:9100']"
+      line: "  - targets: ['{{ target_host }}:9100']"
       path: "{{ prom_dir }}/prometheus.yml"
     notify: Restart prometheus
 
