@@ -18,7 +18,7 @@ Management of Linux servers' lifecycle with AWX Project or Ansible Tower
   - Variables to declare in AWX:
     - `el_hosts`: Enterprise Linux hosts on which to apply this playbook
 
-* `deb_update.yml`
+* `deb_update.yml` - **WIP** (not applying any update for the moment)
   - Use: check and apply available updates on Debian-like hosts
   - Variables to declare in AWX:
     - `deb_hosts`: Debian-like hosts on which to apply this playbook
