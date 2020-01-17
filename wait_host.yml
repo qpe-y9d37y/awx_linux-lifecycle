@@ -1,0 +1,11 @@
+---
+- name: Waiting for host to wake up
+  hosts: "{{ new_host }}"
+
+  tasks:
+
+  - name:
+    wait_for_connection:
+      timeout: 1800
+      sleep: 300
+      delay: 600
