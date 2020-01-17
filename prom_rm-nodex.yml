@@ -1,0 +1,18 @@
+---
+- name: Remove node exporter from Prometheus
+  hosts: {{ prom_host }}
+
+  tasks:
+
+  - name: Remove host from Prometheus
+    lineinfile:
+      regexp: "{{ decom_host }}"
+      path: "{{ prom_dir }}/prometheus.yml"
+      state: absent
+    notify: Restart prometheus
+
+  handlers:
+
+  - name: Restart prometheus
+    docker_compose:
+      restarted: yes
