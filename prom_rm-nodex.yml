@@ -16,3 +16,4 @@
   - name: Restart prometheus
     docker_compose:
       restarted: yes
+      state: present
