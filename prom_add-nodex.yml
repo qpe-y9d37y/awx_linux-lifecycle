@@ -1,6 +1,6 @@
 ---
 - name: Install Prometheus node exporter
-  hosts: {{ target_host }}
+  hosts: "{{ target_host }}"
 
   vars:
   - nodex_url: "https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz"
@@ -57,7 +57,7 @@
     when: ansible_facts['services']['firewalld.service'] is defined
 
 - name: Add new node in Prometheus
-  hosts: {{ prom_host }}
+  hosts: "{{ prom_host }}"
 
   tasks:
 

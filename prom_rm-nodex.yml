@@ -1,6 +1,6 @@
 ---
 - name: Remove node exporter from Prometheus
-  hosts: {{ prom_host }}
+  hosts: "{{ prom_host }}"
 
   tasks:
 
