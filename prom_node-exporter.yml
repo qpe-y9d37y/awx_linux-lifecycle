@@ -1,0 +1,75 @@
+---
+- name: Install Prometheus node exporter
+  hosts: {{ target_host }}
+
+  vars:
+  - nodex_url: "https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz"
+  - nodex_dir: "{{ nodex_url.split('/')[-1] | regex_replace('.tar.gz', '') }}"
+
+  tasks:
+
+  - name: Create user for node exporter
+    user:
+      name: node_exporter
+      shell: "/bin/false"
+      create_home: no
+      system: yes
+
+  - name: Download and unarchive node exporter
+    unarchive:
+      src: "{{ nodex_url }}"
+      dest: /tmp
+      remote_src: yes
+
+  - name: Copy node_exporter to binaries
+    copy:
+      src: "/tmp/{{ nodex_dir }}/node_exporter"
+      dest: /usr/local/bin/node_exporter
+      remote_src: yes
+      owner: node_exporter
+      group: node_exporter
+      mode: 0755
+
+  - name: Create service
+    copy:
+      src: files/node_exporter.service
+      dest: /etc/systemd/system/node_exporter.service
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Reload daemon and start node_exporter
+    systemd:
+      daemon_reload: yes
+      name: node_exporter
+      state: started
+      enabled: yes
+
+  - name: Retrieving details about services
+    service_facts:
+
+  - name: Open port 9100
+    firewalld:
+      immediate: yes
+      permanent: yes
+      port: 9100/tcp
+      state: enabled
+    when: ansible_facts['services']['firewalld.service'] is defined
+
+- name: Add new node in Prometheus
+  hosts: {{ prom_host }}
+
+  tasks:
+
+  - name: Add new host in prometheus.yml
+    lineinfile:
+      insertafter: "  - targets: ['localhost:9100']"
+      line: "  - targets: ['{{  }}:9100']"
+      path: "{{ prom_dir }}/prometheus.yml"
+    notify: Restart prometheus
+
+  handlers:
+
+  - name: Restart prometheus
+    docker_compose:
+      restarted: yes
