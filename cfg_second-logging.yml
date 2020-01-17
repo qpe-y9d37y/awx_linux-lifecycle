@@ -1,0 +1,41 @@
+---
+- name: Enable secondary logging
+  hosts: all
+
+  tasks:
+
+  - name: Create file tree
+    file:
+      path: /var/adm
+      state: directory
+      mode: '0755'
+      owner: root
+      group: root
+
+  - name: Create directory to store logs
+    file:
+      path: /var/adm/history
+      state: directory
+      mode: '1777'
+      owner: root
+      group: root
+
+  - name: Set configuration
+    blockinfile:
+      path: /etc/profile
+      block: |
+        FROM=$(/usr/bin/who am i 2>/dev/null | awk '{print $1}')
+        TO=$(/usr/bin/whoami | awk '{print $1}')
+        FILE="${FROM}:${TO}"
+        
+        if [[ ! -d /var/adm/history/${TO} ]]; then
+          mkdir -p /var/adm/history/${TO}
+          chmod 700 /var/adm/history/${TO}
+        fi
+        
+        HISTFILE=/var/adm/history/${TO}/.sh_history.${FILE}
+        EXTENDED_HISTORY=ON
+        HISTSIZE=10000
+        HISTDATEFMT=%d-%m-%y.%H:%M:%S
+        HISTTIMEFORMAT="%F %T "
+        export HISTFILE EXTENDED_HISTORY HISTSIZE HISTDATEFMT HISTTIMEFORMAT
