@@ -1,6 +1,7 @@
 ---
 - name: Check and apply available updates on Debian type Linux
   hosts: "{{ deb_hosts }}"
+  serial: 1
 
   tasks:
 
@@ -23,3 +24,8 @@
   - name: Print available updates
     debug:
       var: output.msg
+
+  - name: Print message if no update available
+    debug:
+      msg: "No update available"
+    when: "No packages will be installed, upgraded, or removed." in output.msg
