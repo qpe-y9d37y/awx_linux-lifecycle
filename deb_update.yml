@@ -12,6 +12,7 @@
   - name: Apt update
     apt:
       update-cache: yes
+      force_apt_get: yes
     register: update
 
   - name: Print available updates
