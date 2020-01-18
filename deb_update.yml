@@ -28,4 +28,4 @@
   - name: Print message if no update available
     debug:
       msg: "No update available"
-    when: "No packages will be installed, upgraded, or removed." in output.msg
+    when: '"No packages will be installed, upgraded, or removed." in output.msg'
