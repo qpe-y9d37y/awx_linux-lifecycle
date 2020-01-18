@@ -16,7 +16,7 @@
 
   - name: Print available updates
     debug:
-    var: apt-update
+      var: apt-update
 
   - name: Check updates
     apt:
