@@ -12,19 +12,14 @@
   - name: Apt update
     apt:
       update-cache: yes
-      force_apt_get: yes
     register: update
-
-  - name: Print available updates
-    debug:
-      var: update
 
   - name: Check updates
     apt:
       upgrade: 'yes'
     check_mode: yes
-    register: upgrade
+    register: output
 
   - name: Print available updates
     debug:
-      var: upgrade
+      var: output.msg
